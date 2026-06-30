@@ -52,7 +52,6 @@ jobs:
         with:
           name: cypress-videos
           path: frontend/cypress/videos
-
       - uses: actions/upload-artifact@v4.6.2
         if: failure()
         with:
