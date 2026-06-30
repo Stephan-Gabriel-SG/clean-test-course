@@ -15,7 +15,6 @@ jobs:
       - run: npm install
       - name: Run functional tests
         run: npm test -- --coverage --watchAll=false
-
   deploy:
     needs: [function_test]
     runs-on: ubuntu-latest
@@ -52,13 +51,3 @@ jobs:
         with:
           name: cypress-videos
           path: frontend/cypress/videos
-      - uses: actions/upload-artifact@v4.6.2
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: frontend/cypress/screenshots
-      - uses: actions/upload-artifact@v4.6.2
-        if: always()
-        with:
-          name: cypress-logs
-          path: ~/.cache/Cypress/logs
