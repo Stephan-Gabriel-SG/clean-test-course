@@ -52,3 +52,13 @@ jobs:
         with:
           name: cypress-videos
           path: frontend/cypress/videos
+      - uses: actions/upload-artifact@v4.6.2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: frontend/cypress/screenshots
+      - uses: actions/upload-artifact@v4.6.2
+        if: always()
+        with:
+          name: cypress-logs
+          path: ~/.cache/Cypress/logs
